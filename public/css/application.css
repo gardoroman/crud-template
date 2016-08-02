@@ -1,0 +1,36 @@
+.header-style {
+  margin: 20px;
+}
+
+.form-item {
+  display: block;
+}
+
+.user-form {
+  max-width: 400px;
+  margin: 20px;
+  padding: 20px;
+  border: 3px solid gray;
+}
+
+.form-button {
+  margin-top: 10px;
+}
+
+.header-nav li {
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 10px;
+  float: right;
+}
+
+#logout-button {
+  display: inline-block;
+  border-style: none;
+  float: right;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  padding: 5px;
+}

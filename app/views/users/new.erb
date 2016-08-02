@@ -1,0 +1,10 @@
+<%= erb :'_errors' %>
+<div class="user-form">
+  <form method="post" action="/users">
+   <label class="form-item">Username:
+     <input class="username" name="user[username]" type="text" placeholder="Name" value="">
+   </label>
+   <%= erb :'users/_user_form' %>
+   <input type="submit" value="Create Account" class="form-button">
+  </form>
+</div>
