@@ -24,6 +24,10 @@
   float: right;
 }
 
+.list-item {
+  display: inline-block;
+}
+
 #logout-button {
   display: inline-block;
   border-style: none;

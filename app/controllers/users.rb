@@ -1,9 +1,13 @@
+
+
 # Select all user records
 get '/users' do
-
+  @users = User.all
+  erb :'users/index'
 end
 
 get '/users/login' do
+  @user = User.new
   erb :'users/login'
 end
 
@@ -16,8 +20,11 @@ end
 
 # Select a specific user record
 get '/users/:id' do
+  #-- authorize depending on business rules --#
   authorize!
   @user = current_user
+
+  #This may be unnecessary depending on business rules
   if @user.id.to_s == params[:id]
     erb :'users/show'
   else
@@ -38,6 +45,7 @@ post '/users' do
     session[:user_id] = user.id
     redirect "/users/#{user.id}"
   else
+    @user = User.new
     @errors = user.errors.full_messages
     # When building out redirect to appropriate erb
     # @model = Model.most_recent
@@ -54,6 +62,7 @@ post '/users/login' do
       session[:user_id] = @user.id
       redirect "/users/#{@user.id}"
   else
+    @user = User.new
     @errors = ["Log-in was invalid"]
     erb :'users/login'
   end
@@ -67,10 +76,15 @@ end
 
 # Updates a user record
 put '/users/:id' do
-
+  #   authorize!
+  # @user = User.find(params[:id])
+  # @user.update(params[:user])
+  # redirect '/users/#{@user.id}'
 end
 
 # Deletes a user record
 delete '/users/:id' do
-
+  # authorize!
+  # User.find(params[:id]).destroy
+  # redirect '/'
 end
