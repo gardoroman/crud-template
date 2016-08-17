@@ -15,22 +15,27 @@ class User < ActiveRecord::Base
                         uniqueness:  {  message: "The email provided already exists." },
                         format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i, message: "Invalid email format" }
 
-  validate :password_has_valid_length
+  validate :validate_password
 
   def password
     @password ||= Password.new(password_hash)
   end
 
   def password=(new_password)
+    @raw_password = new_password
     self.password_hash = Password.create(new_password)
   end
 
   def authenticate(auth_password)
-    @plaintext = auth_password
     self.password == auth_password
   end
 
-  def password_has_valid_length
-   @plaintext && @plaintext.length > 6
+  private
+  def validate_password
+    if @raw_password.length == 0
+      errors.add(:password, "is required")
+    elsif @raw_password.length < 6
+      errors.add(:password, "must be longer than 6 characters")
+    end
   end
 end

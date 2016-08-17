@@ -1,0 +1,8 @@
+<% if @errors %>
+  <%= erb :"_errors", locals: {errors: @errors} %>
+<% end %>
+
+<form class="model-form" method="post" action="/models">
+  <%= erb :"/models/_form" %>
+  <input class="form-item submit-btn" type="submit" value="Add MODEL">
+</form>

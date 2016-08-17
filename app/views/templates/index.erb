@@ -1,0 +1,5 @@
+<%if logged_in?%>
+  <% if @errors %>
+    <%= erb :"_errors", locals: {errors: @errors} %>
+  <% end %>
+<%end%>

@@ -1,5 +1,3 @@
-
-
 # Select all user records
 get '/users' do
   @users = User.all
@@ -10,7 +8,6 @@ get '/users/login' do
   @user = User.new
   erb :'users/login'
 end
-
 
 # Directs to form for creating a new user record
 get '/users/new' do
@@ -47,8 +44,6 @@ post '/users' do
   else
     @user = User.new
     @errors = user.errors.full_messages
-    # When building out redirect to appropriate erb
-    # @model = Model.most_recent
     erb :'users/new'
   end
 

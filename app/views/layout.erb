@@ -15,29 +15,32 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title>CRUD Exercise</title>
+  <title>Yelp</title>
 </head>
 <body>
   <header>
-    <div class="header-style">
-        <nav class="header-nav">
-          <ul class="">
-            <li class="list-item"><a href="/">home</a></li>
+    <h1 class="title">Yelp </h1>
+  </header>
+    <div class="nav-style">
+        <nav >
+          <ul id="main-nav">
+            <li class="nav-item"><a href="/">home</a></li>
               <% if logged_in? %>
-              <li>Welcome <%= current_user.username %> </li>
-              <li class="list-item">
+              <li class="nav-item"><a href="/users/<%=current_user.id%>">Welcome <%= current_user.username %></a> </li>
+              <li class="nav-item">
             <form method="post" action="/users/logout">
               <input id="logout-button" type="submit" value="Log out" class="button">
             </form>
           </li>
             <% else %>
-            <li class="list-item"><a href="/users/login">login</a></li>
-            <li class="list-item"><a href="/users/new">register</a></li>
+            <li class="nav-item"><a href="/users/login">login</a></li>
+            <li class="nav-item"><a href="/users/new">register</a></li>
            <% end %>
           </ul>
         </nav>
     </div>
-  </header>
+  <div class="container">
   <%= yield %>
+  </div>
 </body>
 </html>

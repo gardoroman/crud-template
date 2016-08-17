@@ -1,41 +1,74 @@
 # Select all MODEL records
-get '/MODELS' do
-
-end
-
-# Directs to form for creating a new MODEL record
-get '/MODELS/new' do
-  authorize!
-
-end
-
-# Select a specific MODEL record
-get '/MODELS/:id' do
-
-end
-
-# Directs to form for editing a specific MODEL record
-get '/MODELS/:id/edit' do
-  authorize!
-  #validate user ownership of model
+get '/MODELs' do
+  @model = MODEL.all
+  erb :'/MODELs/index'
 end
 
 # insert a new MODEL record
-post '/MODELS' do
+post '/MODELs' do
   authorize!
+  @model = MODEL.new(params[:model])
 
+  if @model.save
+    redirect "/MODELs/#{@model.id}"
+  else
+    @errors = @model.errors.full_messages
+    erb :'/MODELs/show'
+  end
+end
+
+# Directs to form for creating a new MODEL record
+get '/MODELs/new' do
+  authorize!
+  erb :"/MODELs/new"
+end
+
+before '/MODELs/:id' do
+  pass if request.path_info.match /new/
+  @model = find_and_ensure_MODEL(params[:id])
+end
+
+
+# Select a specific MODEL record
+get '/MODELs/:id' do
+  @model = MODEL.find(params[:id])
+  if @model
+    erb :"/MODELs/show"
+  else
+    erb :"404.erb"
+  end
+end
+
+# Directs to form for editing a specific MODEL record
+get '/MODELs/:id/edit' do
+  @model = MODEL.find(params[:id])
+  if logged_in? and @model.USER_ID == current_user.id
+    erb :'/MODELs/edit'
+  else
+    @model = MODEL.all
+    @errors = ['You are not authorized to edit this content']
+    erb :'/MODELs/index'
+  end
 end
 
 # Updates a MODEL record
-put '/MODELS/:id' do
-  authorize!
-  #validate user ownership of model
+put '/MODELs/:id' do
+  @model = MODEL.find(params[:id])
+  if logged_in? and @model.USER_ID == current_user.id
+  @model.update(params[:model])
+  if @model.save
+    redirect "/models/#{@model.id}"
+  else
+    @errors = @model.errors.full_messages
+    erb :'/MODELs/edit'
+  end
+end
 
 
 end
 
 # Deletes a MODEL record
-delete '/MODELS/:id' do
+delete '/MODELs/:id' do
   authorize!
   #validate user ownership of model
 

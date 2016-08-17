@@ -1,9 +1,105 @@
-.header-style {
-  margin: 20px;
+body  { font-family:Verdana, Geneva, sans-serif; font-size:10pt; color:#828282; }
+
+
+.container {
+  /*position: relative;*/
+  width: 600px;
+  margin: 0 auto;
+}
+
+.title{
+  width: 100%;
+  text-align: center;
+  display:inline-block;
+  /*font-family: 'Helvetica Neue';*/
+  font-size: 3em;
+  /*letter-spacing: .5em;*/
+  margin:1em;
+  color: blue;
+}
+
+/*.header-style {
+  min-width: 600px
+  margin: 0 auto;
+
+}*/
+
+/*.sub-header{
+  clear: both;
+}*/
+
+#main-nav  {
+  /*display: block;
+  margin-right: 10px;
+  margin-left: 10px;
+  float: right;*/
+}
+
+.nav-style {
+  display:block;
+  clear: both;
+  height: 50px;
+  background-color: black;
+}
+
+nav{
+  display: inline-block;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  float: right;
+  width: 800;
+}
+
+.nav-item {
+  list-style: none;
+  display: inline-block;
+  padding: 3px;
+  margin: 5px;
+  /*float: right;*/
+  /*clear: both;*/
+  /*text-align: center;*/
+}
+
+.nav-item a {
+  list-style: none;
+  text-decoration: none;
+  color: white;
+}
+
+.nav-item a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+.nav-item a:hover {
+  text-decoration: none;
+  color: red;
+}
+
+.restaurant-form, .review-form {
+  margin: 50px;
+  padding: 5px;
+}
+
+.restaurant-form label{
+  color: black
+}
+
+
+.submit-btn {
+  color: black;
 }
 
 .form-item {
   display: block;
+  width: 300px;
+  border-radius: 5px;
+  margin: 15px auto;
+}
+
+.form-text {
+  width: 300px;
+  display: block;
+  min-height: 150px;
 }
 
 .user-form {
@@ -13,26 +109,58 @@
   border: 3px solid gray;
 }
 
+.not-found {
+  font-size: 35px;
+  color: red;
+}
+
+.restaurant-item {
+  border: 2px solid black;
+  display: inline-block;
+  float: left;
+  width: 200px;
+  height: 100px;
+  text-align: center;
+  margin: 20px;
+}
+
+
+.display-comment {
+  color: black;
+  margin-top: 50px;
+  margin-left: 25px;
+}
+
+.post-links {
+  margin-bottom: 15px;
+  color:#828282;
+  text-decoration: none;
+}
+
+.post-links:visited{
+  color:gray;
+}
+
 .form-button {
   margin-top: 10px;
 }
 
-.header-nav li {
-  display: inline-block;
-  margin-right: 10px;
-  margin-left: 10px;
-  float: right;
+.error-item {
+  color: red;
 }
 
-.list-item {
-  display: inline-block;
+.comment-form {
+  margin-top: 50px;
 }
+
+
 
 #logout-button {
   display: inline-block;
   border-style: none;
-  float: right;
-  background-color: black;
+  /*float: right;*/
+  background-color: gray;
+  border-radius: 5px;
   color: white;
   border-radius: 5px;
   text-decoration: none;

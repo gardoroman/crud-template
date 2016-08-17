@@ -1,0 +1,9 @@
+<div class="display-model">
+  <%= erb :"/models/_show", locals:{model: @model} %>
+  <%if logged_in?%>
+    <% if @errors %>
+      <%= erb :"_errors", locals: {errors: @errors} %>
+    <% end %>
+    <%= erb :"/model/_form", locals: {model: @model} %>
+  <%end%>
+</div>
